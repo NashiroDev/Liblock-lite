@@ -1,7 +1,7 @@
 :root {
-    --primary: #f1ebeb;
-    --secondary: #161414;
-    --terciary: #dbd0d0;
+    --primary: #0f1517;
+    --secondary: #ced6d8;
+    --terciary: #593e3e;
     --box-shadow: 1px 5px 30px -10px rgba(0, 0, 0, 0.71);
     --box-shadow-blue: 1px 1px 50px -10px rgba(99, 214, 189, 0.664);
     --mini-border-radius: 1.618px;
@@ -46,12 +46,14 @@ h1 {
 }
 h2 {
     font-size: 1.815em;
+    margin: 1em;
 }
 h3 {
     font-size: 1.618em;
 }
 h4 {
     font-size: 1.218em;
+    margin: 1em
 }
 h5 {
     font-size: 1em;
@@ -86,14 +88,19 @@ input {
     margin: auto;
     font-family: inherit;
 }
+.micro-container {
+    width: 75%;
+    margin: auto;
+    font-family: inherit;
+}
 .navbar {
     height: 4.618rem;
     display: flex;
-    background-color: var(--primary);
+    background-color: #35414775;
     position: sticky;
     justify-content: center;
 }
-/* ------------------ */
+/* --------Index---------- */
 body {
     background-image: url(../images/backgroundForest.png);
     background-size: cover;
@@ -118,22 +125,29 @@ body {
 }
 
 .hidden-instance {
+    z-index: 999;
     display: none;
-}
-
-.first-instance {
     color: var(--secondary);
     background-color: var(--terciary);
     border: 1.6px solid var(--secondary);
-    padding: 1.618px;
-    border-radius: var(--border-radius);
+    padding: 3.618px;
+    border-radius: 15%;
+}
+
+.first-instance {
+    z-index: 150;
+    color: var(--secondary);
+    background-color: var(--terciary);
+    border: 1.6px solid var(--secondary);
+    padding: 3.618px;
+    border-radius: 15%;
 }
 
 .first-instance:hover {
     color: var(--primary);
     background-color: var(--secondary);
     border: 1.6px solid var(--secondary);
-    padding: 1.618px;
+    padding: 3.618px;
     border-radius: var(--border-radius);
 }
 
@@ -141,8 +155,8 @@ body {
     background-color: rgba(108, 87, 87, 0.336);
     border-radius: 7.18px;
     overflow: hidden;
+    transition: background-color 0.5s ease;
 }
-
 
 .card {
     display: flex;
@@ -154,16 +168,26 @@ body {
 .card-image {
     padding: 2rem;
     z-index: 100;
+    margin-left: -10%;
+}
+
+.upper-text {
+    transition: all 0.5s ease;
+    max-height: 300px;
 }
 
 .card-crossway {
-    display: none;
-    width: 25%;
+    display: grid;
+    /* width: 25%; */
+    width: 0;
+    margin-right: 0;
+    margin-left: 5%;
     justify-content: center;
     align-items: center;
     z-index: 110;
+    opacity: 0;
+    transition: all 0.5s ease;
 }
-
 
 .mini-text {
     width: fit-content;
@@ -183,8 +207,8 @@ body {
 
 .mini-card {
     width: 100%;
-    column-count: 3;
-    column-gap: 10%; /* optional */
+    column-count: 2;
+    column-gap: 5%; /* optional */
 }
 
 #mt1 {
@@ -228,4 +252,37 @@ body {
 #mt5:hover {
     background-color: whitesmoke;
     color: #5d575d;
+}
+/* --------------desc pages------------- */
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8.9rem;
+    border: 2px solid black;
+    overflow: hidden;
+}
+.title img {
+    margin-right: 1.618em;
+    width: 75px;
+    height: 75px;
+}
+.title h1 {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.intro {
+    border: 2px solid black;
+    border-radius: var(--border-radius);
+    color: rgb(33, 28, 28);
+    background-color: #d9e8e9;
+    margin-bottom: 3.618em;
+}
+.content {
+    border: 2px solid black;
+    border-radius: var(--border-radius);
+    color: rgb(33, 28, 28);
+    background-color: #d9e8e9;
+    margin-bottom: 2.618em;
 }

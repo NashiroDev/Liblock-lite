@@ -22,7 +22,7 @@
                     <div class="card">
                         <div class="card-crossway">
                             <div class="mini-card">
-                                <h2 class="mini-text" id="mt1"><a href="#">Bitcoin</a></h2>
+                                <h2 class="mini-text" id="mt1"><a href="/pages/description.php">Bitcoin</a></h2>
                                 <h2 class="mini-text" id="mt2"><a href="#">Ethereum</a></h2>
                                 <h2 class="mini-text" id="mt3"><a href="#">Polygon</a></h2>
                                 <h2 class="mini-text" id="mt4"><a href="#">Polkadot</a></h2>
