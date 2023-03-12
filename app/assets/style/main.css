@@ -1,11 +1,11 @@
 :root {
     --primary: #0f1517;
-    --secondary: #ced6d8;
-    --terciary: #593e3e;
+    --secondary: #f2f2f2b5;
+    --terciary: #0072c6;
     --box-shadow: 1px 5px 30px -10px rgba(0, 0, 0, 0.71);
     --box-shadow-blue: 1px 1px 50px -10px rgba(99, 214, 189, 0.664);
     --mini-border-radius: 1.618px;
-    --border-radius: 8px;
+    --border-radius: 10px;
 }
 /* IMP .conf font */
 /* presets */
@@ -96,9 +96,11 @@ input {
 .navbar {
     height: 4.618rem;
     display: flex;
-    background-color: #35414775;
-    position: sticky;
+    background: linear-gradient(to bottom, #c7d8f3, #0072c6);
+    background-color: rgba(0, 114, 198, 0.8); /* 80% opacity */
+    position: relative;
     justify-content: center;
+    border-bottom: 2px solid #003d6b;
 }
 /* --------Index---------- */
 body {
@@ -108,14 +110,32 @@ body {
 }
 
 .navbar-content {
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: left;
     align-items: center; 
-    gap: 6.618rem;
+    padding: 0 1.618rem; /* add padding to the navbar content */
+}
+.select-section {
+    padding: 0.618em;
+    border: 1px solid var(--secondary);
+    border-radius: var(--border-radius);
+}
+.select-section:hover {
+    color: var(--terciary);
+    background-color: var(--secondary);
+}
+
+.caps-left {
+    margin-left: 1.618em; /* change margin left to margin right */
 }
 
 .icon {
+    position: absolute;
     margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .navbar-icon {
@@ -124,35 +144,8 @@ body {
     border-radius: 50%;
 }
 
-.hidden-instance {
-    z-index: 999;
-    display: none;
-    color: var(--secondary);
-    background-color: var(--terciary);
-    border: 1.6px solid var(--secondary);
-    padding: 3.618px;
-    border-radius: 15%;
-}
-
-.first-instance {
-    z-index: 150;
-    color: var(--secondary);
-    background-color: var(--terciary);
-    border: 1.6px solid var(--secondary);
-    padding: 3.618px;
-    border-radius: 15%;
-}
-
-.first-instance:hover {
-    color: var(--primary);
-    background-color: var(--secondary);
-    border: 1.6px solid var(--secondary);
-    padding: 3.618px;
-    border-radius: var(--border-radius);
-}
-
 .wallpaper {
-    background-color: rgba(108, 87, 87, 0.336);
+    background-color: var(--secondary);
     border-radius: 7.18px;
     overflow: hidden;
     transition: background-color 0.5s ease;
@@ -211,6 +204,13 @@ body {
     column-gap: 5%; /* optional */
 }
 
+.description h1 {
+    font-size: 3.618em;
+    padding-top: 1.218em;
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
 #mt1 {
     background-color: #c4c233d7;
     color: whitesmoke;
@@ -259,7 +259,9 @@ body {
     justify-content: center;
     align-items: center;
     height: 8.9rem;
-    border: 2px solid black;
+    border: 3px solid #333;;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary);
     overflow: hidden;
 }
 .title img {
@@ -273,16 +275,29 @@ body {
 }
 
 .intro {
-    border: 2px solid black;
+    border: 2px solid var(--terciary);
     border-radius: var(--border-radius);
-    color: rgb(33, 28, 28);
-    background-color: #d9e8e9;
+    color: #333;
+    background-color: var(--secondary);
     margin-bottom: 3.618em;
 }
 .content {
-    border: 2px solid black;
-    border-radius: var(--border-radius);
-    color: rgb(33, 28, 28);
-    background-color: #d9e8e9;
-    margin-bottom: 2.618em;
+    border: 2px solid var(--terciary);
+    border-radius: 10px;
+    color: #333;
+    background-color: var(--secondary);
+    margin-bottom: 20px;
+    padding: 10px;
 }
+
+.top-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top-info img {
+    border: 2px solid var(--terciary);
+    border-radius: var(--border-radius);
+}
+
+  

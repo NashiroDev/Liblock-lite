@@ -20,3 +20,16 @@ function getDescById(int $id): array|bool
 
     return $sqlStatement->fetch();
 }
+
+function getStatById(int $id): array|bool
+{
+    global $db;
+
+    $query = 'SELECT * FROM blockStat WHERE id = :id';
+    $sqlStatement = $db->prepare($query);
+    $sqlStatement->execute([
+        'id' => $id,
+    ]);
+
+    return $sqlStatement->fetch();
+}

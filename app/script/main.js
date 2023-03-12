@@ -18,7 +18,7 @@ element.addEventListener('mouseover', function() {
   image.style.transition = 'transform 0.7s ease';
   image.style.transform = 'translateX(40rem)';
 
-  element.style.backgroundColor = "rgba(255, 255, 255, 0.3)";
+  element.style.backgroundColor = "rgba(0, 0, 0, 0)";
 
 });
 
@@ -40,6 +40,6 @@ element.addEventListener('mouseout', function() {
   image.style.transition = 'transform 0.7s ease';
   image.style.transform = 'translateX(0px)';
 
-  element.style.backgroundColor = "rgba(108, 87, 87, 0.336)";
+  element.style.backgroundColor = "var(--secondary)";
   
 });
