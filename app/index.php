@@ -1,6 +1,5 @@
 <?php
-
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,19 +21,34 @@
                     <div class="card">
                         <div class="card-crossway">
                             <div class="mini-card">
-                                <h2 class="mini-text" id="mt1"><a href="/pages/description.php">Bitcoin</a></h2>
-                                <h2 class="mini-text" id="mt2"><a href="#">Ethereum</a></h2>
-                                <h2 class="mini-text" id="mt3"><a href="#">Polygon</a></h2>
-                                <h2 class="mini-text" id="mt4"><a href="#">Polkadot</a></h2>
-                                <h2 class="mini-text" id="mt5"><a href="#">Cosmos</a></h2>
+                                <h2 class="mini-text" id="mt1"><a href="/pages/description.php?id=1">Bitcoin</a></h2>
+                                <h2 class="mini-text" id="mt2"><a href="/pages/description.php?id=2">Ethereum</a></h2>
+                                <h2 class="mini-text" id="mt3"><a href="/pages/description.php?id=3">Polygon</a></h2>
+                                <h2 class="mini-text" id="mt4"><a href="/pages/description.php?id=4">Polkadot</a></h2>
+                                <h2 class="mini-text" id="mt5"><a href="/pages/description.php?id=5">Cosmos</a></h2>
                             </div>
                         </div>
                         <div class="card-image">
                             <img class="wallpaper-image" src="./assets/images/blockchainRender.png" alt="">
                         </div>
                         <div class="card-text">
-                            <h2 class="upper-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, provident. Reprehenderit nihil, porro est cupiditate quibusdam, quisquam quasi obcaecati molestiae rerum aperiam natus! Amet nemo et, nesciunt libero atque eaque!</h2>
+                            <h2 class="upper-text">La blockchain est une technologie innovante qui a révolutionné la façon dont les données sont stockées et échangées sur Internet. Cette technologie repose sur des principes tels que la décentralisation, la transparence et la sécurité.</h2>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <div class="description">
+                    <div class="content">
+                        <h2>La blockchain est un registre numérique décentralisé qui permet de stocker des transactions en toute sécurité sans qu'elles ne soient altérées. Chaque transaction est enregistrée dans un bloc qui est ensuite ajouté à une chaîne de blocs, d'où le nom "blockchain". Cette technologie est extrêmement sécurisée car chaque transaction est validée par un réseau de nœuds qui travaillent ensemble pour s'assurer de l'exactitude des données.</h2>
+                    </div>
+                    <div class="content">
+                        <h2>La blockchain a apporté des innovations importantes en matière de sécurité des données. Elle permet de stocker des données de manière permanente et sécurisée, ce qui réduit les risques de piratage et de fraude. La transparence est également un élément clé de la blockchain, car chaque transaction est visible pour tous les membres du réseau.</h2>
+                    </div>
+                    <div class="content">
+                        <h2>La blockchain est également utilisée pour de nombreuses autres applications, telles que les contrats intelligents, les paiements internationaux, les identités numériques et la gestion de la chaîne d'approvisionnement. Cette technologie continue d'évoluer et de s'étendre à de nouveaux domaines, offrant ainsi de nouvelles opportunités pour l'avenir.</h2>
                     </div>
                 </div>
             </div>

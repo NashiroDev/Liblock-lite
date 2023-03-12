@@ -1,3 +1,10 @@
+<?php
+session_start();
+include_once('/app/requests/network.php');
+
+$_SESSION['feed'] = getDescById($_GET['id']);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -15,8 +22,8 @@
         <section>
             <div class="container">
                 <div class="title">
-                    <img src="../assets/images/Bitcoin.png" alt="">
-                    <h1>Description de la blockchain Bitcoin</h1>
+                    <img src="<?= $_SESSION['feed']['imageTitle']; ?>" alt="">
+                    <h1><?= $_SESSION['feed']['textTitle']; ?></h1>
                 </div>
             </div>
         </section>
@@ -24,13 +31,16 @@
             <div class="micro-container">
                 <div class="intro">
                     <h2>Introduction</h2>
-                    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis corporis omnis ad temporibus sed excepturi mollitia, inventore quam dolorum nemo natus ut ipsa ex consequatur, architecto tempore nisi. Esse, nulla?</h4>
+                    <h2><?= $_SESSION['feed']['textIntro']; ?></h4>
                 </div>
                 <div class="content">
-                    <h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, reiciendis accusamus atque facere neque sapiente omnis molestiae natus sunt in ratione consequatur nisi velit. Rerum culpa iusto illum alias eaque!</h4>
+                    <h2><?= $_SESSION['feed']['textFirst']; ?></h4>
                 </div>
                 <div class="content">
-                    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae sapiente ipsum cupiditate suscipit maiores assumenda dolorum sequi earum error? Magnam laboriosam, eveniet quis impedit odit error deserunt! Doloribus, adipisci ab.</h4>
+                    <h2><?= $_SESSION['feed']['textSecond']; ?></h4>
+                </div>
+                <div class="content">
+                    <h2><?= $_SESSION['feed']['textThird']; ?></h4>
                 </div>
             </div>
         </section>
