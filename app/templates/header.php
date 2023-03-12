@@ -1,23 +1,15 @@
 <nav class="navbar">
     <div class="navbar-content">
-        <div class="text">
-            <ul>
-                <li class="first-instance">block 1</li>
-                <li class="hidden-instance">block 2</li>
-                <li class="hidden-instance">block 3</li>
-                <li class="hidden-instance">block 4</li>
-                <li class="hidden-instance">block 5</li>
-            </ul>
-        </div>
+        <?php if (isset($_GET['id'])) : ?>
+            <div class="caps-left">
+                <a class="select-section" href="/pages/stat.php?id=<?= $_GET['id'] ?>">STATS</a>
+            </div>
+            <div class="caps-left">
+                <a class="select-section" href="/pages/description.php?id=<?= $_GET['id'] ?>">DESC</a>
+            </div>
+        <?php endif; ?>
         <div class="icon">
-            <img class="navbar-icon" src="../assets/images/peepoTrader.jpg" alt="None">
-        </div>
-        <div class="text">
-            <ul>
-                <li class="first-instance">section 1</li>
-                <li class="hidden-instance">section 2</li>
-                <li class="hidden-instance">section 3</li>
-            </ul>
+            <a href="/"><img class="navbar-icon" src="../assets/images/peepoTrader.jpg" alt="None"></a>
         </div>
     </div>
 </nav>

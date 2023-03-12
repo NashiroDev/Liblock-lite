@@ -1,11 +1,11 @@
 :root {
-    --primary: #f1ebeb;
-    --secondary: #161414;
-    --terciary: #dbd0d0;
+    --primary: #0f1517;
+    --secondary: #f2f2f2b5;
+    --terciary: #0072c6;
     --box-shadow: 1px 5px 30px -10px rgba(0, 0, 0, 0.71);
     --box-shadow-blue: 1px 1px 50px -10px rgba(99, 214, 189, 0.664);
     --mini-border-radius: 1.618px;
-    --border-radius: 8px;
+    --border-radius: 10px;
 }
 /* IMP .conf font */
 /* presets */
@@ -46,12 +46,14 @@ h1 {
 }
 h2 {
     font-size: 1.815em;
+    margin: 1em;
 }
 h3 {
     font-size: 1.618em;
 }
 h4 {
     font-size: 1.218em;
+    margin: 1em
 }
 h5 {
     font-size: 1em;
@@ -86,14 +88,21 @@ input {
     margin: auto;
     font-family: inherit;
 }
+.micro-container {
+    width: 75%;
+    margin: auto;
+    font-family: inherit;
+}
 .navbar {
     height: 4.618rem;
     display: flex;
-    background-color: var(--primary);
-    position: sticky;
+    background: linear-gradient(to bottom, #c7d8f3, #0072c6);
+    background-color: rgba(0, 114, 198, 0.8); /* 80% opacity */
+    position: relative;
     justify-content: center;
+    border-bottom: 2px solid #003d6b;
 }
-/* ------------------ */
+/* --------Index---------- */
 body {
     background-image: url(../images/backgroundForest.png);
     background-size: cover;
@@ -101,14 +110,32 @@ body {
 }
 
 .navbar-content {
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: left;
     align-items: center; 
-    gap: 6.618rem;
+    padding: 0 1.618rem; /* add padding to the navbar content */
+}
+.select-section {
+    padding: 0.618em;
+    border: 1px solid var(--secondary);
+    border-radius: var(--border-radius);
+}
+.select-section:hover {
+    color: var(--terciary);
+    background-color: var(--secondary);
+}
+
+.caps-left {
+    margin-left: 1.618em; /* change margin left to margin right */
 }
 
 .icon {
+    position: absolute;
     margin: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .navbar-icon {
@@ -117,32 +144,12 @@ body {
     border-radius: 50%;
 }
 
-.hidden-instance {
-    display: none;
-}
-
-.first-instance {
-    color: var(--secondary);
-    background-color: var(--terciary);
-    border: 1.6px solid var(--secondary);
-    padding: 1.618px;
-    border-radius: var(--border-radius);
-}
-
-.first-instance:hover {
-    color: var(--primary);
-    background-color: var(--secondary);
-    border: 1.6px solid var(--secondary);
-    padding: 1.618px;
-    border-radius: var(--border-radius);
-}
-
 .wallpaper {
-    background-color: rgba(108, 87, 87, 0.336);
+    background-color: var(--secondary);
     border-radius: 7.18px;
     overflow: hidden;
+    transition: background-color 0.5s ease;
 }
-
 
 .card {
     display: flex;
@@ -154,16 +161,26 @@ body {
 .card-image {
     padding: 2rem;
     z-index: 100;
+    margin-left: -10%;
+}
+
+.upper-text {
+    transition: all 0.5s ease;
+    max-height: 300px;
 }
 
 .card-crossway {
-    display: none;
-    width: 25%;
+    display: grid;
+    /* width: 25%; */
+    width: 0;
+    margin-right: 0;
+    margin-left: 5%;
     justify-content: center;
     align-items: center;
     z-index: 110;
+    opacity: 0;
+    transition: all 0.5s ease;
 }
-
 
 .mini-text {
     width: fit-content;
@@ -183,8 +200,15 @@ body {
 
 .mini-card {
     width: 100%;
-    column-count: 3;
-    column-gap: 10%; /* optional */
+    column-count: 2;
+    column-gap: 5%; /* optional */
+}
+
+.description h1 {
+    font-size: 3.618em;
+    padding-top: 1.218em;
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 #mt1 {
@@ -229,3 +253,51 @@ body {
     background-color: whitesmoke;
     color: #5d575d;
 }
+/* --------------desc pages------------- */
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8.9rem;
+    border: 3px solid #333;;
+    border-radius: var(--border-radius);
+    background-color: var(--secondary);
+    overflow: hidden;
+}
+.title img {
+    margin-right: 1.618em;
+    width: 75px;
+    height: 75px;
+}
+.title h1 {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.intro {
+    border: 2px solid var(--terciary);
+    border-radius: var(--border-radius);
+    color: #333;
+    background-color: var(--secondary);
+    margin-bottom: 3.618em;
+}
+.content {
+    border: 2px solid var(--terciary);
+    border-radius: 10px;
+    color: #333;
+    background-color: var(--secondary);
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.top-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.top-info img {
+    border: 2px solid var(--terciary);
+    border-radius: var(--border-radius);
+}
+
+  
