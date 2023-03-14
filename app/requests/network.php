@@ -21,11 +21,30 @@ function getDescById(int $id): array|bool
     return $sqlStatement->fetch();
 }
 
+/**
+ * Function to get all sections of the given id row in the database 
+ *
+ * @param integer $id
+ * @return array|boolean
+ */
 function getStatById(int $id): array|bool
 {
     global $db;
 
     $query = 'SELECT * FROM blockStat WHERE id = :id';
+    $sqlStatement = $db->prepare($query);
+    $sqlStatement->execute([
+        'id' => $id,
+    ]);
+
+    return $sqlStatement->fetch();
+}
+
+function getArticleById(int $id): array|bool
+{
+    global $db;
+
+    $query = 'SELECT * FROM blockArticle WHERE id = :id';
     $sqlStatement = $db->prepare($query);
     $sqlStatement->execute([
         'id' => $id,

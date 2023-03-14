@@ -253,6 +253,13 @@ body {
     background-color: whitesmoke;
     color: #5d575d;
 }
+#mtA {
+    background-color: var(--secondary);
+    color: var(--primary);
+}
+#mtA:hover {
+    background-color: var(--terciary);
+}
 /* --------------desc pages------------- */
 .title {
     display: flex;
