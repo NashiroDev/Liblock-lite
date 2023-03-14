@@ -4,6 +4,15 @@ include_once('/app/requests/network.php');
 
 $_SESSION['feed'] = getStatById($_GET['id']);
 
+$toShow = [];
+$lastValue = '';
+foreach ($_SESSION['feed'] as $elem) {
+    if ($elem != $lastValue && !is_null($elem)) {
+        $toShow[] = $elem;
+    }
+    $lastValue = $elem;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -28,10 +37,15 @@ $_SESSION['feed'] = getStatById($_GET['id']);
             </div>
         </section>
         <section>
-            <div class="container">
-                <div class="top-info">
-                    <img src="<?= $_SESSION['feed']['imageInfo'] ?>" alt="">
-                </div>
+            <div class="micro-container">
+                <?php for ($i = 3; $i < count($toShow); $i += 2) : ?>
+                    <div class="display-text">
+                        <h2><?= $toShow[$i] ?></h2>
+                    </div>
+                    <div class="display-img">
+                        <img src="<?= $toShow[$i + 1] ?>" alt="">
+                    </div>
+                <?php endfor; ?>
             </div>
         </section>
     </main>
