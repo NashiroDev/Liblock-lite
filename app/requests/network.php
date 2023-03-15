@@ -40,15 +40,26 @@ function getStatById(int $id): array|bool
     return $sqlStatement->fetch();
 }
 
-function getArticleById(int $id): array|bool
+function getArticleByName(string $textTitle): array|bool
 {
     global $db;
 
-    $query = 'SELECT * FROM blockArticle WHERE id = :id';
+    $query = 'SELECT * FROM blockArticle WHERE textTitle = :textTitle';
     $sqlStatement = $db->prepare($query);
     $sqlStatement->execute([
-        'id' => $id,
+        'textTitle' => $textTitle,
     ]);
 
     return $sqlStatement->fetch();
+}
+
+function getAllArticlesName(): array|bool
+{
+    global $db;
+
+    $query = 'SELECT textTitle FROM blockArticle';
+    $sqlStatement = $db->prepare($query);
+    $sqlStatement->execute();
+
+    return $sqlStatement->fetchAll();
 }

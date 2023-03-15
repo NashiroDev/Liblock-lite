@@ -1,7 +1,7 @@
 <nav class="navbar">
     <div class="navbar-content">
         <div class="caps-left">
-                <a class="select-section" href="/pages/article.php?id=1">Articles</a>
+                <a class="select-section" href="/pages/articleHub.php">Articles</a>
         </div>
         <?php if (isset($_GET['id'])) : ?>
             <div class="caps-left">

@@ -2,7 +2,7 @@
 session_start();
 include_once('/app/requests/network.php');
 
-$_SESSION['feed'] = getArticleById($_GET['id']);
+$_SESSION['feed'] = getArticleByName($_SESSION['textTitle']);
 
 $toShow = [];
 $lastValue = '';
@@ -32,7 +32,7 @@ foreach ($_SESSION['feed'] as $elem) {
         <section>
             <div class="container">
                 <div class="title">
-                    <h1><?= $_SESSION['feed']['textTitle']; ?></h1>
+                    <h1><?= $toShow[1]; ?></h1>
                 </div>
             </div>
         </section>
@@ -53,7 +53,7 @@ foreach ($_SESSION['feed'] as $elem) {
         </section>
     </main>
     <?php include_once("/app/templates/footer.php"); ?>
-    <script src="../script/ma in.js"></script>
+    <script src="../script/main.js"></script>
 </body>
 
 </html>

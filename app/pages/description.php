@@ -3,6 +3,7 @@ session_start();
 include_once('/app/requests/network.php');
 
 $_SESSION['feed'] = getDescById($_GET['id']);
+$url = "/pages/description.php?id=";
 ?>
 
 <!DOCTYPE html>
@@ -21,9 +22,17 @@ $_SESSION['feed'] = getDescById($_GET['id']);
     <main>
         <section>
             <div class="container">
-                <div class="title">
-                    <img src="<?= $_SESSION['feed']['imageTitle']; ?>" alt="">
-                    <h1><?= $_SESSION['feed']['textTitle']; ?></h1>
+                <div class="top">
+                    <div class="temp">
+                        <a href="<?= $url.($_GET['id']-1) ?>">T</a> 
+                    </div>
+                    <div class="title">
+                        <img src="<?= $_SESSION['feed']['imageTitle']; ?>" alt="">
+                        <h1><?= $_SESSION['feed']['textTitle']; ?></h1>
+                    </div>
+                    <div class="temp">
+                        <a href="<?= $url.($_GET['id']+1) ?>">T</a>
+                    </div>
                 </div>
             </div>
         </section>
