@@ -67,7 +67,6 @@ foreach ($_SESSION['feed'] as $elem) {
         </section>
     </main>
     <?php include_once("/app/templates/footer.php"); ?>
-    <script src="../script/main.js"></script>
 </body>
 
 </html>

@@ -16,7 +16,7 @@
             </div>
         <?php endif; ?>
         <div class="icon">
-            <a href="/"><img class="navbar-icon" src="../assets/images/peepoTrader.jpg" alt="None"></a>
+            <a href="/"><img class="navbar-icon" src="/assets/images/peepoTrader.jpg" alt="None"></a>
         </div>
         <div class="user-gate">
             <?php if (!isset($_SESSION['CURRENT_USER'])) : ?>
@@ -27,9 +27,18 @@
                     <a class="selected-section" href="/users/register.php">S'inscrire</a>
                 </div>
             <?php else: ?>
-                <div class="caps-right">
-                    <a class="selected-section" href="/users/logout.php">Se déconnecter</a>
-                </div>
+                <?php if (!in_array("ROOT_USER", $_SESSION['CURRENT_USER']['roles'])) : ?>
+                    <div class="caps-right">
+                        <a class="selected-section" href="/users/logout.php">Se déconnecter</a>
+                    </div>
+                <?php else : ?>
+                    <div class="caps-right">
+                        <a class="select-section" href="/admin/users">Admin</a>
+                    </div>
+                    <div class="caps-right">
+                        <a class="selected-section" href="/users/logout.php">Se déconnecter</a>
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
         </div>
     </div>

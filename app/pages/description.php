@@ -63,7 +63,6 @@ $url = "/pages/description.php?id=";
         </section>
     </main>
     <?php include_once("/app/templates/footer.php"); ?>
-    <script src="../script/ma in.js"></script>
 </body>
 
 </html>

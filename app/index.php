@@ -13,7 +13,7 @@ session_start();
 </head>
 
 <body>
-    <?php include_once("./templates/header.php"); ?>
+    <?php include_once("/app/templates/header.php"); ?>
     <main>
         <section>
             <div class="container">
@@ -57,8 +57,8 @@ session_start();
             </div>
         </section>
     </main>
-    <?php include_once("./templates/footer.php"); ?>
-    <script src="./script/main.js"></script>
+    <?php include_once("app/templates/footer.php"); ?>
+    <script src="/script/main.js"></script>
 </body>
 
 </html>
