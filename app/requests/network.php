@@ -21,6 +21,12 @@ function getDescById(int $id): array|bool
     return $sqlStatement->fetch();
 }
 
+/**
+ * Function to get all sections of the given id row in the database 
+ *
+ * @param integer $id
+ * @return array|boolean
+ */
 function getStatById(int $id): array|bool
 {
     global $db;
@@ -32,4 +38,28 @@ function getStatById(int $id): array|bool
     ]);
 
     return $sqlStatement->fetch();
+}
+
+function getArticleByName(string $textTitle): array|bool
+{
+    global $db;
+
+    $query = 'SELECT * FROM blockArticle WHERE textTitle = :textTitle';
+    $sqlStatement = $db->prepare($query);
+    $sqlStatement->execute([
+        'textTitle' => $textTitle,
+    ]);
+
+    return $sqlStatement->fetch();
+}
+
+function getAllArticlesName(): array|bool
+{
+    global $db;
+
+    $query = 'SELECT textTitle FROM blockArticle';
+    $sqlStatement = $db->prepare($query);
+    $sqlStatement->execute();
+
+    return $sqlStatement->fetchAll();
 }
