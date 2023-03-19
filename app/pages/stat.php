@@ -3,6 +3,7 @@ session_start();
 include_once('/app/requests/network.php');
 
 $_SESSION['feed'] = getStatById($_GET['id']);
+$url = "/pages/stat.php?id=";
 
 $toShow = [];
 $lastValue = '';
@@ -30,9 +31,25 @@ foreach ($_SESSION['feed'] as $elem) {
     <main>
         <section>
             <div class="container">
-                <div class="title">
-                    <img src="<?= $_SESSION['feed']['imageTitle']; ?>" alt="">
-                    <h1><?= $_SESSION['feed']['textTitle']; ?></h1>
+                <div class="top">
+                    <div class="side-buttons">
+                        <?php if($_GET['id'] == 1): ?>
+                            <p class="selector"><a href="<?= $url . "5"; ?>"><</a></p> 
+                        <?php else: ?>
+                            <p class="selector"><a href="<?= $url.($_GET['id']-1) ?>"><</a></p>
+                        <?php endif; ?> 
+                    </div>
+                    <div class="title">
+                        <img src="<?= $_SESSION['feed']['imageTitle']; ?>" alt="">
+                        <h1><?= $_SESSION['feed']['textTitle']; ?></h1>
+                    </div>
+                    <div class="side-buttons">
+                        <?php if($_GET['id'] == 5): ?>
+                            <p class="selector"><a href="<?= $url . "1"; ?>">></a></p>
+                        <?php else: ?>
+                            <p class="selector"><a href="<?= $url.($_GET['id']+1) ?>">></a></p>
+                        <?php endif; ?> 
+                    </div>
                 </div>
             </div>
         </section>

@@ -23,15 +23,23 @@ $url = "/pages/description.php?id=";
         <section>
             <div class="container">
                 <div class="top">
-                    <div class="temp">
-                        <a href="<?= $url.($_GET['id']-1) ?>">T</a> 
+                    <div class="side-buttons">
+                        <?php if($_GET['id'] == 1): ?>
+                            <p class="selector"><a href="<?= $url . "5"; ?>"><</a></p> 
+                        <?php else: ?>
+                            <p class="selector"><a href="<?= $url.($_GET['id']-1) ?>"><</a></p>
+                        <?php endif; ?> 
                     </div>
                     <div class="title">
                         <img src="<?= $_SESSION['feed']['imageTitle']; ?>" alt="">
                         <h1><?= $_SESSION['feed']['textTitle']; ?></h1>
                     </div>
-                    <div class="temp">
-                        <a href="<?= $url.($_GET['id']+1) ?>">T</a>
+                    <div class="side-buttons">
+                        <?php if($_GET['id'] == 5): ?>
+                            <p class="selector"><a href="<?= $url . "1"; ?>">></a></p>
+                        <?php else: ?>
+                            <p class="selector"><a href="<?= $url.($_GET['id']+1) ?>">></a></p>
+                        <?php endif; ?> 
                     </div>
                 </div>
             </div>
