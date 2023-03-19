@@ -26,15 +26,19 @@ if (!empty($_POST['textTitle'])) {
     <main>
         <section>
             <div class="container">
-                <div class="title">
-                    <h1>Liste des articles disponibles</h1>
-                </div>
+                <div class="top">
+                    <div class="title-alone">
+                        <h1>Liste des articles disponibles</h1>
+                    </div>
+                </div>   
             </div>
-            <div class="container">
+        </section>
+        <section>
+            <div class="micro-container">
                 <?php foreach ($_SESSION['feed'] as $article) : ?>
-                    <div class="card">
+                    <div class="box">
                         <form action="" method="POST">
-                            <div class="mini-text">
+                            <div class="box-text">
                                 <input type="hidden" name="textTitle" value="<?= $article['textTitle'] ?>">
                                 <button type="submit">
                                     <h3><?= $article['textTitle'] ?></h3>
