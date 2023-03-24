@@ -93,7 +93,7 @@ if (!$user) {
                     </div>
                 </div>
             </div>
-            <a href="<?= "/app/admin/users"; ?>" class="button go-back">Retour à la liste</a>
+            <a href="<?= "/admin/users"; ?>" class="button go-back">Retour à la liste</a>
         </section>
     </main>
     <?php include_once('/app/templates/footer.php'); ?>

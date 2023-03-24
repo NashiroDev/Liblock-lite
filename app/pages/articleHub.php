@@ -37,11 +37,11 @@ if (!empty($_POST['textTitle'])) {
             <div class="micro-container">
                 <?php foreach ($_SESSION['feed'] as $article) : ?>
                     <div class="box">
-                        <form action="" method="POST">
+                        <form action="" method="POST" class="box-form">
                             <div class="box-text">
                                 <input type="hidden" name="textTitle" value="<?= $article['textTitle'] ?>">
                                 <button type="submit">
-                                    <h3><?= $article['textTitle'] ?></h3>
+                                    <?= $article['textTitle'] ?>
                                 </button>
                             </div>
                         </form>
