@@ -57,7 +57,7 @@ foreach ($_SESSION['feed'] as $elem) {
             <div class="micro-container">
                 <?php for ($i = 3; $i < count($toShow); $i += 2) : ?>
                     <div class="display-text">
-                        <h2><?= $toShow[$i] ?></h2>
+                        <h4><?= $toShow[$i] ?></h2>
                     </div>
                     <div class="display-img">
                         <img src="<?= $toShow[$i + 1] ?>" alt="">

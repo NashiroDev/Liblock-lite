@@ -29,13 +29,13 @@ if (!$user) {
         $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
         $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
         $roles = $_POST['roles'];
+        $progression = filter_input(INPUT_POST, 'progression', FILTER_SANITIZE_SPECIAL_CHARS);
 
         if (!isset($errorMessage)) {
-            if (updateUser($nom, $prenom, $email, $user['id'], $roles)) {
+            if (updateUser($nom, $prenom, $email, $user['id'], $progression, $roles)) {
                 $_SESSION['message']['success'] = 'Utilisateur mis à jour';
 
                 header("Location:/admin/users");
-
             } else {
                 $errorMessage = "Une erreur est survenue, veuillez réessayer.";
             }
@@ -87,13 +87,17 @@ if (!$user) {
                                 <label for="roles[]">Rôle administrateur :</label>
                                 <input type="checkbox" name="roles[]" <?= in_array('ROOT_USER', json_decode($user['roles'])) ? 'checked' : null; ?> value="ROOT_USER">
                             </div>
+                            <div class="group">
+                                <label for="progression">Progression :</label>
+                                <input type="number" name="progression" value="<?= $user['progression'] ?>" required>
+                            </div>
                             <input type="hidden" name='token' value="<?= $_SESSION['token'] ?>">
                             <button type="submit" class="submit-button">Appliquer les changements</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <a href="<?= "/app/admin/users"; ?>" class="button go-back">Retour à la liste</a>
+            <a href="<?= "/admin/users"; ?>" class="button go-back">Retour à la liste</a>
         </section>
     </main>
     <?php include_once('/app/templates/footer.php'); ?>

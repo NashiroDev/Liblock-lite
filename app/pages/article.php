@@ -31,7 +31,7 @@ foreach ($_SESSION['feed'] as $elem) {
     <main>
         <section>
             <div class="container">
-                <div class="title">
+                <div class="title-alone">
                     <h1><?= $toShow[1]; ?></h1>
                 </div>
             </div>
@@ -45,7 +45,7 @@ foreach ($_SESSION['feed'] as $elem) {
                         </div>
                     <?php else : ?>
                         <div class="display-text">
-                            <h2><?= $toShow[$i] ?></h2>
+                            <h4><?= $toShow[$i] ?></h2>
                         </div>
                     <?php endif; ?>
                 <?php endfor; ?>

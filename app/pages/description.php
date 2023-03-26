@@ -48,16 +48,16 @@ $url = "/pages/description.php?id=";
             <div class="micro-container">
                 <div class="intro">
                     <h2>Introduction</h2>
-                    <h2><?= $_SESSION['feed']['textIntro']; ?></h4>
+                    <h4><?= $_SESSION['feed']['textIntro']; ?></h4>
                 </div>
                 <div class="content">
-                    <h2><?= $_SESSION['feed']['textFirst']; ?></h4>
+                    <h4><?= $_SESSION['feed']['textFirst']; ?></h4>
                 </div>
                 <div class="content">
-                    <h2><?= $_SESSION['feed']['textSecond']; ?></h4>
+                    <h4><?= $_SESSION['feed']['textSecond']; ?></h4>
                 </div>
                 <div class="content">
-                    <h2><?= $_SESSION['feed']['textThird']; ?></h4>
+                    <h4><?= $_SESSION['feed']['textThird']; ?></h4>
                 </div>
             </div>
         </section>

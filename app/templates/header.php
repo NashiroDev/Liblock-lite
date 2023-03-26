@@ -1,18 +1,24 @@
 <nav class="navbar">
     <div class="navbar-content">
-        <div class="caps-left">
-        <?php if($_SERVER['REQUEST_URI'] == "/pages/articleHub.php"): ?>
-            <a class="select-section" href="/">Home</a>
-        <?php else: ?>
-            <a class="select-section" href="/pages/articleHub.php">Articles</a>
-        <?php endif; ?>
-        </div>
         <?php if (isset($_GET['id'])) : ?>
             <div class="caps-left">
                 <a class="<?= $_SERVER['REQUEST_URI'] == "/pages/stat.php?id=".$_GET['id'] ? "selected-section" : "select-section" ?>" href="/pages/stat.php?id=<?= $_GET['id'] ?>">Statistiques</a>
             </div>
             <div class="caps-left">
                 <a class="<?= $_SERVER['REQUEST_URI'] == "/pages/description.php?id=".$_GET['id'] ? "selected-section" : "select-section" ?>" href="/pages/description.php?id=<?= $_GET['id'] ?>">Descriptions</a>
+            </div>
+            <div class="caps-left">
+                <a class="<?= $_SERVER['REQUEST_URI'] == "/pages/survey.php" ? "selected-section" : "select-section" ?>" href="/pages/survey.php">Questionnaire</a>
+            </div>
+            <div class="caps-left">
+                <a class="<?= $_SERVER['REQUEST_URI'] == "/pages/articleHub.php" ? "selected-section" : "select-section" ?>" href="/pages/articleHub.php">Articles</a>
+            </div>
+        <?php elseif ($_SERVER['REQUEST_URI'] == ('/pages/survey.php' || '/pages/articleHub.php')): ?>
+            <div class="caps-left">
+                <a class="<?= $_SERVER['REQUEST_URI'] == "/pages/survey.php" ? "selected-section" : "select-section" ?>" href="/pages/survey.php">Questionnaire</a>
+            </div>
+            <div class="caps-left">
+                <a class="<?= $_SERVER['REQUEST_URI'] == "/pages/articleHub.php" ? "selected-section" : "select-section" ?>" href="/pages/articleHub.php">Articles</a>
             </div>
         <?php endif; ?>
         <div class="icon">

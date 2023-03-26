@@ -19,7 +19,7 @@ if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email'])
             $isEmailExisting = checkEmailExistance($email);
     
             if (!$isEmailExisting && !isset($errorMessage)) {
-                $confirmChange = insertUser($nom, $prenom, $email, $password);
+                $confirmChange = insertUser($nom, $prenom, $email, $password, 0);
                 header("Location:/users/login.php");
             } else {
                 $errorMessage = isset($errorMessage) ? $errorMessage : "L'email est déjà utilisé par un autre compte";

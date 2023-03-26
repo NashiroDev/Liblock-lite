@@ -16,10 +16,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             'prenom' => $user['prenom'],
             'email' => $user['email'],
             'roles' => json_decode($user['roles']),
+            'progression' => $user['progression']
         ];
         header("Location:/");
     } else {
-        $errorMessage = "Adresse email invalide ou mot de passe erroné.";
+        $_SESSION['message']['error'] = "Adresse email invalide ou mot de passe erroné.";
     }
 }
 
@@ -40,10 +41,15 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     <?php include_once("/app/templates/header.php"); ?>
     <main>
         <section>
-            <?php if (isset($errorMessage)) : ?>
-                <div class="notify alert-danger">
-                    <?= $errorMessage ?>
-                </div>
+            <?php if (isset($_SESSION['message']['error'])) : ?>
+                <div class="notify alert-danger"><?= $_SESSION['message']['error']; ?></div>
+                <?php unset($_SESSION['message']['error']); ?>
+            <?php elseif (isset($_SESSION['message']['success'])) : ?>
+                <div class="notify alert-success"><?= $_SESSION['message']['success']; ?></div>
+                <?php unset($_SESSION['message']['success']); ?>
+            <?php elseif (isset($_SESSION['message']['pop'])) : ?>
+                <div class="notify alert-pop"><?= $_SESSION['message']['pop']; ?></div>
+                <?php unset($_SESSION['message']['pop']); ?>
             <?php endif; ?>
             <div class="form-page">
                 <div class="form-content">

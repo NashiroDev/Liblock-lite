@@ -25,6 +25,8 @@ if (!isset($_SESSION['CURRENT_USER']) || !in_array('ROOT_USER', $_SESSION['CURRE
         <section>
             <div class="container">
                 <h1 class="user-title">Administration des utilisateurs</h1>
+                <div class="separator"></div>
+                <div class="separator-right"></div>
                 <a href="<?= "/"; ?>" class="button go-back">Retour</a>
                 <?php if (isset($_SESSION['message']['error'])) : ?>
                     <div class="notify alert-danger"><?= $_SESSION['message']['error']; ?></div>
@@ -40,6 +42,7 @@ if (!isset($_SESSION['CURRENT_USER']) || !in_array('ROOT_USER', $_SESSION['CURRE
                                 <h3><b>Nom complet</b> : <br><?= strip_tags("$user[prenom] $user[nom]"); ?></h3>
                                 <h4><b>Email</b> : <br><?= strip_tags($user['email']); ?></h4>
                                 <p><b>ID</b> : <?= strip_tags($user['id']); ?></p>
+                                <p><b>Progression</b> : <?= strip_tags($user['progression']); ?></p>
                             </div>
                             <div class="card-button">
                                 <a href="<?= "/admin/users/update.php?id=$user[id]" ?>"
