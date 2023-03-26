@@ -134,7 +134,7 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    min-height: 70vh;
 }
 .form-content {
     width: 65%;
@@ -163,6 +163,7 @@ body {
     border-radius: var(--border-radius);
     margin-bottom: 10px;
     text-align: center;
+    color: var(--black);
 }
 .alert-success {
     background-color: rgba(31, 143, 81, 0.5);
@@ -171,6 +172,10 @@ body {
 .alert-danger {
     background-color: rgba(139, 53, 53, 0.5);
     border: 1px solid rgb(82, 23, 23);
+}
+.alert-pop {
+    background-color: rgba(53, 60, 139, 0.5);
+    border: 1px solid rgb(23, 35, 82);
 }
 .submit-button {
     font-size: large;
@@ -477,7 +482,7 @@ body {
     width: fit-content;
     background-color: var(--terciary);
     margin: 1.2em;
-    padding: 0.8em;
+    padding: 0.2em;
     border: 1px solid var(--primary);
     border-radius: var(--border-radius);
 }
@@ -486,8 +491,6 @@ body {
 }
 .selector:hover {
     background-color: var(--secondary);
-    margin: 1.2em;
-    padding: 0.8em;
     border: 1px solid var(--terciary);
     border-radius: var(--border-radius);
     translate: 2% 3%;
@@ -508,10 +511,10 @@ body {
     border-radius: var(--border-radius);
 }
 .button:hover {
-    scale: 1.1;
+    scale: 1.03;
     background-color: var(--secondary);
     color: var(--primary);
-    transition: 0.22s ease-in-out;
+    transition: 0.19s ease-in-out;
 }
 .go-back {
     margin: 1.618em;
@@ -560,4 +563,27 @@ body {
 }
 .modify-button {
     background-color: var(--terciary);
+}
+/**********Questionnaire****************/
+.form-question {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    min-height: 55vh;
+}
+.question {
+    margin-bottom: 3em;
+}
+.survey-form label, 
+input
+{
+    margin-bottom: 1.81em;
+    border-bottom: var(--black);
+}
+.survey-button {
+    margin-top: 0.9em;
+    font-size: 1.2em;
+}
+.survey-button:hover {
+    border: var(--primary);
 }

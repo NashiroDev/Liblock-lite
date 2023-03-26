@@ -63,3 +63,14 @@ function getAllArticlesName(): array|bool
 
     return $sqlStatement->fetchAll();
 }
+
+function getSurvey(): array|bool 
+{
+    global $db;
+
+    $query = 'SELECT question, validReply, reply1, reply2, reply3, reply4 FROM blockSurvey';
+    $sqlStatement = $db->prepare($query);
+    $sqlStatement->execute();
+
+    return $sqlStatement->fetchAll();
+}

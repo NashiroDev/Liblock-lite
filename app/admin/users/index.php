@@ -42,6 +42,7 @@ if (!isset($_SESSION['CURRENT_USER']) || !in_array('ROOT_USER', $_SESSION['CURRE
                                 <h3><b>Nom complet</b> : <br><?= strip_tags("$user[prenom] $user[nom]"); ?></h3>
                                 <h4><b>Email</b> : <br><?= strip_tags($user['email']); ?></h4>
                                 <p><b>ID</b> : <?= strip_tags($user['id']); ?></p>
+                                <p><b>Progression</b> : <?= strip_tags($user['progression']); ?></p>
                             </div>
                             <div class="card-button">
                                 <a href="<?= "/admin/users/update.php?id=$user[id]" ?>"

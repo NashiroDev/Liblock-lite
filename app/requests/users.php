@@ -28,7 +28,7 @@ function checkEmailExistance(string $email): array|bool
  * @param string $toHashPassword
  * @return boolean
  */
-function insertUser(string $nom, string $prenom, string $email, string $toHashPassword): bool
+function insertUser(string $nom, string $prenom, string $email, string $toHashPassword, int $progression): bool
 {
     global $db;
 
@@ -41,7 +41,7 @@ function insertUser(string $nom, string $prenom, string $email, string $toHashPa
             'email' => $email,
             'password' => password_hash($toHashPassword, PASSWORD_ARGON2I),
             'roles' => json_encode(['CLASSIC_USER']),
-            'progression' => json_encode(['0']),
+            'progression' => $progression,
         ]);
     } catch (PDOException $e) {
         return false;
@@ -115,12 +115,12 @@ function getUserById(?int $id=0): array|bool
  *
  * @return boolean
  */
-function updateUser(string $nom, string $prenom, string $email, int $id, array $roles=["CLASSIC_USER"]) : bool
+function updateUser(string $nom, string $prenom, string $email, int $id, int $progression, array $roles=["CLASSIC_USER"]) : bool
 {
     global $db;
 
     try {
-        $query = 'UPDATE users SET nom = :nom, prenom = :prenom, email = :email, roles = :roles WHERE id = :id';
+        $query = 'UPDATE users SET nom = :nom, prenom = :prenom, email = :email, roles = :roles, progression = :progression WHERE id = :id';
         $sqlStatement = $db->prepare($query);
         $sqlStatement->execute([
             'nom' => $nom,
@@ -128,10 +128,42 @@ function updateUser(string $nom, string $prenom, string $email, int $id, array $
             'email' => $email,
             'id' => $id,
             'roles' => json_encode($roles),
+            'progression' => $progression,
         ]);
 
     } catch (PDOException $e) {
         return false;
     }
     return true;
+}
+
+function updateProgressById(int $id, int $value): bool
+{
+    global $db;
+
+    try {
+        $query = 'UPDATE users SET progression = :value WHERE id = :id';
+        $sqlStatement = $db->prepare($query);
+        $sqlStatement->execute([
+            'id' => $id,
+            'value' => $value,
+        ]);
+    } catch (PDOException $e) {
+        return false;
+    }
+
+    return true;
+}
+
+function getProgressById(int $id): array|bool
+{
+    global $db;
+
+    $query = 'SELECT progression FROM users WHERE id = :id';
+    $sqlStatement=$db->prepare($query);
+    $sqlStatement->execute([
+        'id' => $id,
+    ]);
+
+    return $sqlStatement->fetch();
 }
