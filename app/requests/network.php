@@ -74,3 +74,14 @@ function getSurvey(): array|bool
 
     return $sqlStatement->fetchAll();
 }
+
+function getMaxSurvey(): array|bool
+{
+    global $db;
+
+    $query = 'SELECT COUNT(id) FROM blockSurvey';
+    $sqlStatement = $db->prepare($query);
+    $sqlStatement->execute();
+
+    return $sqlStatement->fetch();
+}

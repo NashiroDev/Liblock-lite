@@ -30,23 +30,25 @@ if (!empty($_POST['textTitle'])) {
                     <div class="title-alone">
                         <h1>Liste des articles disponibles</h1>
                     </div>
-                </div>   
+                </div>
             </div>
         </section>
         <section>
             <div class="micro-container">
-                <?php foreach ($_SESSION['feed'] as $article) : ?>
-                    <div class="box">
-                        <form action="" method="POST" class="box-form">
-                            <div class="box-text">
-                                <input type="hidden" name="textTitle" value="<?= $article['textTitle'] ?>">
-                                <button type="submit">
-                                    <?= $article['textTitle'] ?>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                <?php endforeach; ?>
+                <div class="wrapper">
+                    <?php foreach ($_SESSION['feed'] as $article) : ?>
+                        <div class="box">
+                            <form action="" method="POST" class="box-form">
+                                <div class="box-text">
+                                    <input type="hidden" name="textTitle" value="<?= $article['textTitle'] ?>">
+                                    <button type="submit">
+                                        <?= $article['textTitle'] ?>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </section>
     </main>

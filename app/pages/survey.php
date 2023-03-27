@@ -11,17 +11,9 @@ if (!isset($_SESSION['CURRENT_USER'])) {
     header("Location:/users/login.php");
 }
 
-if (!isset($_SESSION['track'])) {
-    $_SESSION['track'] = 1;
-
-} elseif ($_SESSION['track'] == 2) {
-    unset($_SESSION['track']);
-} else {
-    $_SESSION['track'] += 1;
-}
-
 $start = getProgressById($_SESSION['CURRENT_USER']['id'])[0];
-
+$max = getMaxSurvey()[0];
+$current = (1 - (($max - $start) / $max)) * 100;
 
 if (!empty($_POST['reponse'])) {
 
@@ -33,7 +25,7 @@ if (!empty($_POST['reponse'])) {
     } else {
         $_SESSION['message']['error'] = "Réponse incorrecte, rééssayez !";
     }
-    sleep(2);
+
     header("Location:" . $_SERVER['REQUEST_URI']);
 }
 
@@ -58,6 +50,18 @@ if (!empty($_POST['reponse'])) {
                     <h1>Testez vos connaissances !</h1>
                 </div>
             </div>
+            <div class="micro-container">
+                <div class="progress">
+                    <?php for ($i = 0; $i < $start; $i++) : ?>
+                        <div class="bar" style="width: <?= $current / $start; ?>%">
+                            <p></p>
+                        </div>
+                    <?php endfor; ?>
+                </div>
+                <div class="progress-percent">
+                    <p><?= $current ?>% completed</p>
+                </div>
+            </div>
             <div class="container">
                 <?php if (isset($_SESSION['message']['error'])) : ?>
                     <div class="notify alert-danger"><?= $_SESSION['message']['error']; ?></div>
@@ -71,28 +75,36 @@ if (!empty($_POST['reponse'])) {
                 <?php endif; ?>
             </div>
         </section>
-        <section>
-            <div class="micro-container">
-                <div class="form-question">
-                    <div class="form-content">
-                        <div class="question">
-                            <h3><?= $data[$start]['question'] ?></h3>
+        <?php if ($start < $max) : ?>
+            <section>
+                <div class="micro-container">
+                    <div class="form-question">
+                        <div class="form-content">
+                            <div class="question">
+                                <h3><?= $data[$start]['question'] ?></h3>
+                            </div>
+                            <form class="survey-form" action="<?= $_SERVER['REQUEST_URI']; ?>" method="POST">
+                                <input type="radio" name="reponse" value=1 id="rep1">
+                                <label for="rep1"><?= $data[$start]['reply1'] ?></label><br>
+                                <input type="radio" name="reponse" value=2 id="rep2">
+                                <label for="rep2"><?= $data[$start]['reply2'] ?></label><br>
+                                <input type="radio" name="reponse" value=3 id="rep3">
+                                <label for="rep3"><?= $data[$start]['reply3'] ?></label><br>
+                                <input type="radio" name="reponse" value=4 id="rep4">
+                                <label for="rep4"><?= $data[$start]['reply4'] ?></label><br>
+                                <button class="button survey-button" type="submit">Valider la réponse</button>
+                            </form>
                         </div>
-                        <form class="survey-form" action="<?= $_SERVER['REQUEST_URI']; ?>" method="POST">
-                            <input type="radio" name="reponse" value=1 id="rep1">
-                            <label for="rep1"><?= $data[$start]['reply1'] ?></label><br>
-                            <input type="radio" name="reponse" value=2 id="rep2">
-                            <label for="rep2"><?= $data[$start]['reply2'] ?></label><br>
-                            <input type="radio" name="reponse" value=3 id="rep3">
-                            <label for="rep3"><?= $data[$start]['reply3'] ?></label><br>
-                            <input type="radio" name="reponse" value=4 id="rep4">
-                            <label for="rep4"><?= $data[$start]['reply4'] ?></label><br>
-                            <button class="button survey-button" type="submit">Valider la réponse</button>
-                        </form>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        <?php else : ?>
+            <section>
+                <div class="finished-alert">
+                    <h2>Vous avez terminer toutes les questions, félicitations !</h2>
+                </div>
+            </section>
+        <?php endif; ?>
     </main>
     <?php include_once("/app/templates/footer.php"); ?>
 </body>
