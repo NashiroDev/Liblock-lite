@@ -12,6 +12,20 @@ if (!isset($_SESSION['CURRENT_USER'])) {
 }
 
 $start = getProgressById($_SESSION['CURRENT_USER']['id'])[0];
+
+if (isset($_SESSION['reminder'])) {
+    if ($_SESSION['reminder'] === $start) {
+        $message = 'Mauvaise réponse';
+        $class = 'alert-danger';
+    } else {
+        $message = 'Bonne réponse';
+        $class = 'alert-success';
+        $_SESSION['reminder'] = $start;
+    }
+} elseif (!empty($_POST['reponse'])) {
+    $_SESSION['reminder'] = $start;
+}
+
 $max = getMaxSurvey()[0];
 $current = (1 - (($max - $start) / $max)) * 100;
 
@@ -62,36 +76,37 @@ if (!empty($_POST['reponse'])) {
                     <p><?= $current ?>% completed</p>
                 </div>
             </div>
-            <div class="container">
-                <?php if (isset($_SESSION['message']['error'])) : ?>
-                    <div class="notify alert-danger"><?= $_SESSION['message']['error']; ?></div>
-                    <?php unset($_SESSION['message']['error']); ?>
-                <?php elseif (isset($_SESSION['message']['success'])) : ?>
-                    <div class="notify alert-success"><?= $_SESSION['message']['success']; ?></div>
-                    <?php unset($_SESSION['message']['success']); ?>
-                <?php elseif (isset($_SESSION['message']['pop'])) : ?>
-                    <div class="notify alert-pop"><?= $_SESSION['message']['pop']; ?></div>
-                    <?php unset($_SESSION['message']['pop']); ?>
-                <?php endif; ?>
-            </div>
         </section>
         <?php if ($start < $max) : ?>
             <section>
                 <div class="micro-container">
+                    <div class="container">
+                        <?php if (isset($message)) : ?>
+                            <div class="notify <?= $class ?>"><?= $message; ?></div>
+                        <?php endif; ?>
+                    </div>
                     <div class="form-question">
                         <div class="form-content">
                             <div class="question">
                                 <h3><?= $data[$start]['question'] ?></h3>
                             </div>
                             <form class="survey-form" action="<?= $_SERVER['REQUEST_URI']; ?>" method="POST">
-                                <input type="radio" name="reponse" value=1 id="rep1">
-                                <label for="rep1"><?= $data[$start]['reply1'] ?></label><br>
-                                <input type="radio" name="reponse" value=2 id="rep2">
-                                <label for="rep2"><?= $data[$start]['reply2'] ?></label><br>
-                                <input type="radio" name="reponse" value=3 id="rep3">
-                                <label for="rep3"><?= $data[$start]['reply3'] ?></label><br>
-                                <input type="radio" name="reponse" value=4 id="rep4">
-                                <label for="rep4"><?= $data[$start]['reply4'] ?></label><br>
+                                <div class="group-q">
+                                    <input type="radio" name="reponse" value=1 id="rep1">
+                                    <label for="rep1"><?= $data[$start]['reply1'] ?></label><br>
+                                </div>
+                                <div class="group-q">
+                                    <input type="radio" name="reponse" value=2 id="rep2">
+                                    <label for="rep2"><?= $data[$start]['reply2'] ?></label><br>
+                                </div>
+                                <div class="group-q">
+                                    <input type="radio" name="reponse" value=3 id="rep3">
+                                    <label for="rep3"><?= $data[$start]['reply3'] ?></label><br>
+                                </div>
+                                <div class="group-q">
+                                    <input type="radio" name="reponse" value=4 id="rep4">
+                                    <label for="rep4"><?= $data[$start]['reply4'] ?></label><br>
+                                </div>
                                 <button class="button survey-button" type="submit">Valider la réponse</button>
                             </form>
                         </div>

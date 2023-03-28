@@ -151,13 +151,21 @@ input {
     padding: 0.728em;
     padding-top: 1.618em;
 }
+.group-q {
+    padding: 0.728em;
+    padding-top: 1.618em;
+    display: flex;
+    justify-content: center;
+    gap: 0.3em;
+    align-items: inherit;
+}
 /* --------Shared---------- */
 body {
     background-size: cover;
     backdrop-filter: blur(3px);
 }
 .notify {
-    width: 80%;
+    width: 60%;
     margin: auto;
     font-size: 1.4em;
     padding: 0.618em;
@@ -418,11 +426,12 @@ body {
     width: 100%;
 }
 .title-alone {
-    width: 100%;
+    width: 84%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 6.9rem;
+    height: 5.4rem;
+    margin: auto;
     border: 2.7px solid #333;;
     border-radius: var(--border-radius);
     background-color: var(--secondary);
