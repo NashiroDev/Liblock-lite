@@ -2,11 +2,11 @@
 session_start();
 include_once('/app/requests/network.php');
 
-$_SESSION['feed'] = getArticleByName($_SESSION['textTitle']);
+$article = getArticleByName($_SESSION['textTitle']);
 
 $toShow = [];
 $lastValue = '';
-foreach ($_SESSION['feed'] as $elem) {
+foreach ($article as $elem) {
     if ($elem != $lastValue && !is_null($elem)) {
         $toShow[] = $elem;
     }
