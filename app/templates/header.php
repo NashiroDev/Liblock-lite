@@ -38,7 +38,7 @@
                         <a class="selected-section" href="/users/logout.php">Se déconnecter</a>
                     </div>
                 <?php else : ?>
-                    <div class="caps-right">
+                    <div class="caps-right admin">
                         <a class="select-section" href="/admin/users">Admin</a>
                     </div>
                     <div class="caps-right">

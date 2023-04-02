@@ -73,7 +73,7 @@ if (!empty($_POST['reponse'])) {
                     <?php endfor; ?>
                 </div>
                 <div class="progress-percent">
-                    <p><?= $current ?>% completed</p>
+                    <p><?= round($current, 2) ?>% completed</p>
                 </div>
             </div>
         </section>

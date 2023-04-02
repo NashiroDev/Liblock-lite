@@ -27,7 +27,7 @@ if (!empty($_POST['textTitle'])) {
         <section>
             <div class="container">
                 <div class="top">
-                    <div class="title-alone">
+                    <div class="title-alone2">
                         <h1>Liste des articles disponibles</h1>
                     </div>
                 </div>
