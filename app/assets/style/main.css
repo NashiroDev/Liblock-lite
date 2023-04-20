@@ -688,6 +688,10 @@ input
     .card-text {
         display: none;
     }
+    .form-content {
+        margin: 0;
+        width: 95%;
+    }
 }
 @media (max-width: 860px) {
     .user-card {
@@ -727,10 +731,16 @@ input
     .box {
         width: 45%;
     }
+    .mini-card {
+        background-color: rgba(0, 0, 0, 0);
+    }
 }
 @media (max-width: 610px) {
     .card-image {
         display: none;
+    }
+    .description h1 {
+        font-size: 16px;
     }
     .card-crossway {
         width: 100%;
