@@ -42,6 +42,9 @@ session_start();
         <div class="separator-right"></div>
         <section>
             <div class="container">
+                <div class="go-to-chatbot">
+                    <a href="/pages/chatbot.php">Posez directemment vos questions</a>
+                </div>
                 <div class="description">
                     <h1>Qu'est-ce que la Blockchain ?</h1>
                     <div class="content">

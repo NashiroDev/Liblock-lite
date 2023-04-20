@@ -648,6 +648,26 @@ input
     margin: 0.518em auto;
     border-radius: 15px;
 }
+.go-to-chatbot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.go-to-chatbot a {
+    padding: 0.318em;
+    border: 1px solid var(--secondary);
+    border-radius: 12px;
+    transition: all .3s ease-in-out;
+}
+.go-to-chatbot:hover a {
+    background-color: var(--terciary);
+    translate: -1.2px -1.1px;
+}
+.chatbot-title{
+    margin: 0.618em auto;
+    text-align: center;
+}
 /* RESPONSIVE */
 @media (max-width: 1320px) {
     a,
