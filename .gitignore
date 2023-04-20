@@ -1,2 +1,2 @@
 /docker-compose.yml
-/app/conf/mysql.php
+app/conf/mysql.php
