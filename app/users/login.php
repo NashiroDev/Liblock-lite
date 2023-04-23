@@ -8,8 +8,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     $user = checkEmailExistance($_POST['email']);
 
-    if ($user && password_verify($_POST['password'], $user['password'])) {
-
+    $token = filter_input(INPUT_POST, 'token', FILTER_DEFAULT);
+    
+    if (!$token || $token !== $_SESSION['token']) {
+        $errorMessage = "Une erreur est survenue, token invalide.";
+    } elseif ($user && password_verify($_POST['password'], $user['password'])) {
         $_SESSION['CURRENT_USER'] = [
             'id' => $user['id'],
             'nom' => $user['nom'],
@@ -22,6 +25,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     } else {
         $_SESSION['message']['error'] = "Adresse email invalide ou mot de passe erroné.";
     }
+} else {
+    $_SESSION['token'] = bin2hex(random_bytes(35));
 }
 
 ?>
@@ -63,6 +68,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                             <label for="password">Mot de passe : </label>
                             <input type="password" name="password" required>
                         </div>
+                        <input type="hidden" name='token' value="<?= $_SESSION['token']; ?>">
                         <button type="submit" class="submit-button">Se connecter</button>
                     </form>
                 </div>

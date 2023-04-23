@@ -4,30 +4,29 @@ session_start();
 include_once('/app/requests/users.php');
 
 
-if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email']) && !empty($_POST['password']))
-    {
-        $token = filter_input(INPUT_POST, 'token', FILTER_DEFAULT);
-    
-        if (!$token || $token !== $_SESSION['token']) {
-            $errorMessage = "Une erreur est survenue, token invalide.";
-        } else {
-            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-            $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
-            $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
-            $password = $_POST['password'];
-    
-            $isEmailExisting = checkEmailExistance($email);
-    
-            if (!$isEmailExisting && !isset($errorMessage)) {
-                $confirmChange = insertUser($nom, $prenom, $email, $password, 0);
-                header("Location:/users/login.php");
-            } else {
-                $errorMessage = isset($errorMessage) ? $errorMessage : "L'email est déjà utilisé par un autre compte";
-            }
-        }
+if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email']) && !empty($_POST['password'])) {
+    $token = filter_input(INPUT_POST, 'token', FILTER_DEFAULT);
+
+    if (!$token || $token !== $_SESSION['token']) {
+        $errorMessage = "Une erreur est survenue, token invalide.";
     } else {
-        $_SESSION['token'] = bin2hex(random_bytes(35));
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_SPECIAL_CHARS);
+        $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_SPECIAL_CHARS);
+        $password = $_POST['password'];
+
+        $isEmailExisting = checkEmailExistance($email);
+
+        if (!$isEmailExisting && !isset($errorMessage)) {
+            $confirmChange = insertUser($nom, $prenom, $email, $password, 0);
+            header("Location:/users/login.php");
+        } else {
+            $errorMessage = isset($errorMessage) ? $errorMessage : "L'email est déjà utilisé par un autre compte";
+        }
     }
+} else {
+    $_SESSION['token'] = bin2hex(random_bytes(35));
+}
 
 ?>
 

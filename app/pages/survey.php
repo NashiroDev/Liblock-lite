@@ -31,7 +31,11 @@ $current = (1 - (($max - $start) / $max)) * 100;
 
 if (!empty($_POST['reponse'])) {
 
-    if ($_POST['reponse'] == $data[$start]['validReply']) {
+    $token = filter_input(INPUT_POST, 'token', FILTER_DEFAULT);
+
+    if (!$token || $token !== $_SESSION['token']) {
+        $errorMessage = "Une erreur est survenue, token invalide.";
+    } elseif ($_POST['reponse'] == $data[$start]['validReply']) {
 
         $_SESSION['message']['success'] = "Bonne réponse !";
 
@@ -41,6 +45,8 @@ if (!empty($_POST['reponse'])) {
     }
 
     header("Location:" . $_SERVER['REQUEST_URI']);
+} else {
+    $_SESSION['token'] = bin2hex(random_bytes(35));
 }
 
 ?>
@@ -107,6 +113,7 @@ if (!empty($_POST['reponse'])) {
                                     <input type="radio" name="reponse" value=4 id="rep4">
                                     <label for="rep4"><?= $data[$start]['reply4'] ?></label><br>
                                 </div>
+                                <input type="hidden" name='token' value="<?= $_SESSION['token']; ?>">
                                 <button class="button survey-button" type="submit">Valider la réponse</button>
                             </form>
                         </div>
