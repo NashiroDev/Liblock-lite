@@ -1,32 +1,45 @@
 # -*- coding: utf-8 -*-
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.by import By
+import handle.browseAllNotAdmin as bana
 
-import time
+def testOne():
+    report = list()
+    try:
+        driver = bana.connect()
+    except:
+        report.append(['Connexion', 'Error'])
+    else:
+        report.append(['Connexion', 'Success'])
+    
+    if report[0][1] == 'Success':
+        try:
+            bana.try_desc(driver)
+        except:
+            report.append(['Description', 'Error'])
+        else:
+            report.append(['Description', 'Success'])
+        try:
+            bana.try_stat(driver)
+        except:
+            report.append(['Statistiques', 'Error'])
+        else:
+            report.append(['Statistiques', 'Success'])
+        try:
+            bana.try_article(driver)
+        except:
+            report.append(['Article', 'Error'])
+        else:
+            report.append(['Article', 'Success'])
+        try:
+            bana.try_register_login(driver)
+        except:
+            report.append(['Register Login', 'Error'])
+        else:
+            report.append(['Register Login', 'Success'])
+        bana.quit(driver)
+    return report
 
-path_to_chromedriver = 'C:/WebDriver/chromedriver.exe'
-
-# Create a Service object
-s = Service(executable_path=path_to_chromedriver)
-
-# Pass the Service object to the Chrome constructor
-driver = webdriver.Chrome(service=s)
-
-url = 'http://176.191.98.14:50/'
-
-driver.get(url)
-
-element_to_hover_over = driver.find_element('class name', 'card')
-
-# survol de la souris
-hover = ActionChains(driver).move_to_element(element_to_hover_over)
-hover.perform()
-
-button = ActionChains(driver).move_to_element(driver.find_element(By.LINK_TEXT, 'Bitcoin'))
-button.perform()
-driver.find_element(By.LINK_TEXT, 'Bitcoin').click()
-
-# ferme le navigateur
-driver.quit()
+if __name__ == '__main__':
+    report = testOne()
+    for entry in report:
+        print(f'{entry[0]} ---> {entry[1]}')
+    input()
