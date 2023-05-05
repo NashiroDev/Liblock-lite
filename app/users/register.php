@@ -7,7 +7,7 @@ include_once('/app/requests/users.php');
 if (!empty($_POST['prenom']) && !empty($_POST['nom']) && !empty($_POST['email']) && !empty($_POST['password'])) {
     $token = filter_input(INPUT_POST, 'token', FILTER_DEFAULT);
 
-    if (!$token || $token !== $_SESSION['token']) {
+    if ((!$token || $token !== $_SESSION['token'])) {
         $errorMessage = "Une erreur est survenue, token invalide.";
     } else {
         $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
