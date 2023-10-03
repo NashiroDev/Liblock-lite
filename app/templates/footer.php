@@ -1,5 +1,5 @@
 <footer>
     <div class="container">
-        <p>Made by Nathan Pauchon</p>
+        <p>Made for BTS</p>
     </div>
 </footer>
