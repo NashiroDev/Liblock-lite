@@ -137,6 +137,11 @@ function updateUser(string $nom, string $prenom, string $email, int $id, int $pr
     return true;
 }
 
+/**
+ * Met a jour là progression d'un user sur les quiz
+ *
+ * @return boolean
+ */
 function updateProgressById(int $id, int $value): bool
 {
     global $db;
@@ -155,6 +160,11 @@ function updateProgressById(int $id, int $value): bool
     return true;
 }
 
+/**
+ * récupère la progression d'un user sur les quiz
+ *
+ * @return array|boolean
+ */
 function getProgressById(int $id): array|bool
 {
     global $db;
